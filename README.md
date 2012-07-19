@@ -25,5 +25,5 @@ Alternatively you can use bezierCurve function which works similarly to bezier.
 The difference is that instead of specifying a moment in time, you have to specify a number
 of points you want from a curve:
 
-    >> bezierCurve [[1,1],[5,5]] 3
-      [[1.0,1.0],[3.0,3.0],[5.0,5.0]]
+    >> bezierCurve [[1, 1], [4, 5], [7, 2]] (4::Float)
+      [[1.0,1.0],[3.0,2.8888888],[5.0,3.2222223],[7.0,2.0]]
