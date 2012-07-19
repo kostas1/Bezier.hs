@@ -9,7 +9,7 @@ type Point = []
 -- parametric line between two points:
 line :: Num a => Point a -> Point a -> a -> Point a
 line p q t = zipWith interpolate p q
-  where interpolate a b = (1 - t)*a + t*b
+  where interpolate a b = (1 - t)*a + t*b 
 
 -- bezier of just one point is fixed at that point,
 -- and bezier of a list of points is just linear interpolation between
@@ -23,9 +23,10 @@ bezier ps  t = line (bezier (init ps) t)
                     
 -- bezierCurve generates a list of points of a curve
 -- where number of points is specified as second argument
-bezierCurve :: (Num a, Enum a, Fractional a) => [Point a] -> a -> [Point a]
+bezierCurve :: (Num a, Eq a, Enum a, Fractional a) => [Point a] -> a -> [Point a]
 bezierCurve [] _ = []
 bezierCurve [p] _ = [p]
+bezierCurve ps 1 = [head ps]
 bezierCurve ps n = 
     let step = 1 / (n - 1)
     in map (bezier ps) [0, step..1]
